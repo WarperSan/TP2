@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace OptimizationModule
@@ -19,7 +20,7 @@ namespace OptimizationModule
             if (registerObject == null)
                 registerObject = gameObject;
 
-            renderers = GetComponentsInChildren<Renderer>();
+            renderers = GetComponentsInChildren<Renderer>().OrderBy(r => r.bounds.size.magnitude).ToArray();
         }
 
         private void Update()
@@ -39,8 +40,8 @@ namespace OptimizationModule
         private void LateUpdate()
         {
             // Check if the bounds are within the frustum
-            foreach (var item in renderers)
-                item.enabled = GeometryUtility.TestPlanesAABB(planes, item.bounds);
+            //foreach (var item in renderers)
+            //    item.enabled = GeometryUtility.TestPlanesAABB(planes, item.bounds);
         }
     }
 }

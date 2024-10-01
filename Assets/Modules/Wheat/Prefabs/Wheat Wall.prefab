@@ -137,6 +137,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheat (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -210,6 +220,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wheat (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -285,6 +305,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheat (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -358,6 +388,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wheat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -433,6 +473,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheat (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -506,6 +556,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wheat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -581,6 +641,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheat (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -654,6 +724,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wheat (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892786573807677500, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082167954875198050, guid: a56cdbdb4d1bdc1d7ad85cc2cb7c6266,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
