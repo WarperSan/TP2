@@ -9,6 +9,31 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Body
     second: {fileID: 2100000, guid: bb6504fdfeb6749489b2f37609d41f7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: L_Demon_Arm
+    second: {fileID: 2100000, guid: e9e37243df1a6789fad6e8a1d3ccfb11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lantern
+    second: {fileID: 2100000, guid: 3d8884e494bfc77a7bb2e8bdd8afb0b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: R_Demon_Arm
+    second: {fileID: 2100000, guid: 7c9994064317d907db5f9bd41d3d5428, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tongue
+    second: {fileID: 2100000, guid: 2793aa146bc4a925ea23be5f4783a63f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Weapon
+    second: {fileID: 2100000, guid: eb008ecf291d30a0b929b4babbd53f8b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
