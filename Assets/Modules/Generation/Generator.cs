@@ -46,7 +46,7 @@ namespace GenerationModule
             var g = Instantiate(wall, transform);
             g.name = $"Wall ({cell.X}; {cell.Y}) ({cell.State})";
             g.transform.SetLocalPositionAndRotation(
-                new Vector3(position.x, 0, position.y) * 2,
+                new Vector3(position.x, 0, position.y) * 3,
                 Quaternion.Euler(rotation)
             );
         }
@@ -55,7 +55,7 @@ namespace GenerationModule
             var g = Instantiate(path, transform);
             g.name = $"Path ({cell.X}; {cell.Y})";
             g.transform.SetLocalPositionAndRotation(
-                new Vector3(cell.X, 0, cell.Y) * 2 + new Vector3(1, 0, 1),
+                new Vector3(cell.X, 0, cell.Y) * 3 + new Vector3(1, 0, 1),
                 Quaternion.Euler(Vector3.up * Random.Range(-6, 6))
             );
             g.transform.localScale = Vector3.one * Random.Range(60, 80);
