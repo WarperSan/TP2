@@ -55,10 +55,10 @@ namespace GenerationModule
             var g = Instantiate(path, transform);
             g.name = $"Path ({cell.X}; {cell.Y})";
             g.transform.SetLocalPositionAndRotation(
-                new Vector3(cell.X, 0, cell.Y) * 3 + new Vector3(1, 0, 1),
+                new Vector3(cell.X, 0, cell.Y) * 3 + new Vector3(1.5f, 0, 1.5f),
                 Quaternion.Euler(Vector3.up * Random.Range(-6, 6))
             );
-            g.transform.localScale = Vector3.one * Random.Range(60, 80);
+            g.transform.localScale = Vector3.one * Random.Range(80, 100);
         }
     }
 }
