@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8146964954472991178}
   - component: {fileID: -8334706002265272035}
   m_Layer: 0
-  m_Name: Wheat Wall
+  m_Name: Wall Segment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
