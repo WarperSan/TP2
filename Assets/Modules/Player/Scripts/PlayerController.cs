@@ -18,18 +18,6 @@ public class PlayerController : Controller
     /// <inheritdoc/>
     public override void OnMove(Vector2 dir) => this.movementDirection = dir;
 
-    /// <inheritdoc/>
-    public override void OnJumpStart() => this.playerMovement.ProcessJumpStart();
-
-    /// <inheritdoc/>
-    public override void OnJumpEnd() => this.playerMovement.ProcessJumpRelease();
-
-    /// <inheritdoc/>
-    public override void OnSprintStart() => this.playerMovement.StartSprint();
-
-    /// <inheritdoc/>
-    public override void OnSprintEnd() => this.playerMovement.EndSprint();
-
     [Header("Interaction")]
     [SerializeField]
     private PlayerInteraction playerInteraction;
@@ -42,8 +30,6 @@ public class PlayerController : Controller
     {
         this.playerMovement.ProcessMovement(this.movementDirection, elapsed);
         this.playerMovement.ProcessGravity(elapsed);
-        this.playerMovement.ProcessJump();
-        this.playerMovement.ProcessSprint();
         this.playerInteraction.UpdateCursor();
     }
 }

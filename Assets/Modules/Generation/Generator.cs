@@ -1,3 +1,4 @@
+using Unity.AI.Navigation;
 using UnityEngine;
 namespace GenerationModule
 {
@@ -5,12 +6,14 @@ namespace GenerationModule
     {
         public GameObject wall;
         public GameObject path;
+        public NavMeshSurface surface;
 
         private void Awake()
         {
             var maze = new MazeGenerator(10, 10, 10).Generate();
 
             DrawMaze(maze);
+            surface.BuildNavMesh();
         }
 
         private void DrawMaze(Cell[] cells)

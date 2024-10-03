@@ -16,8 +16,6 @@ namespace ControllerModule.Controllers
         public delegate void LookEvent(Vector2 direction);
         public delegate void MoveEvent(Vector2 direction);
         public delegate void FireEvent();
-        public delegate void JumpEvent();
-        public delegate void SprintEvent();
 
         #endregion
 
@@ -25,10 +23,6 @@ namespace ControllerModule.Controllers
 
         public event LookEvent Look;
         public event MoveEvent Move;
-        public event JumpEvent JumpStart;
-        public event JumpEvent JumpEnd;
-        public event SprintEvent SprintStart;
-        public event SprintEvent SprintEnd;
 
         public event FireEvent OnFireStart;
         public event FireEvent OnFireEnd;
@@ -46,14 +40,6 @@ namespace ControllerModule.Controllers
                 ControllerManager.BackTo();
         }
 
-        public void Sprint(InputAction.CallbackContext context)
-        {
-            if (context.started)
-                this.SprintStart?.Invoke();
-            else if (context.canceled)
-                this.SprintEnd?.Invoke();
-        }
-
         #endregion
 
         #region Operation
@@ -66,10 +52,6 @@ namespace ControllerModule.Controllers
             // Subscribe all events
             input.Look += controller.OnLook;
             input.Move += controller.OnMove;
-            input.JumpStart += controller.OnJumpStart;
-            input.JumpEnd += controller.OnJumpEnd;
-            input.SprintStart += controller.OnSprintStart;
-            input.SprintEnd += controller.OnSprintEnd;
 
             input.OnFireStart += controller.OnFireStart;
             input.OnFireEnd += controller.OnFireEnd;
@@ -85,10 +67,6 @@ namespace ControllerModule.Controllers
             // Unsubscribe all events
             input.Look -= controller.OnLook;
             input.Move -= controller.OnMove;
-            input.JumpStart -= controller.OnJumpStart;
-            input.JumpEnd -= controller.OnJumpEnd;
-            input.SprintStart -= controller.OnSprintStart;
-            input.SprintEnd -= controller.OnSprintEnd;
 
             input.OnFireStart -= controller.OnFireStart;
             input.OnFireEnd -= controller.OnFireEnd;
@@ -107,12 +85,8 @@ namespace ControllerModule.Controllers
         {
             this.playerInput = this.GetComponent<PlayerInput>();
             var jumpAction = this.playerInput.actions["Jump"];
-            jumpAction.started += _ => this.JumpStart?.Invoke();
-            jumpAction.canceled += _ => this.JumpEnd?.Invoke();
 
             var sprintAction = this.playerInput.actions["Sprint"];
-            sprintAction.started += _ => this.SprintStart?.Invoke();
-            sprintAction.canceled += _ => this.SprintEnd?.Invoke();
 
             var fireAction = this.playerInput.actions["Fire"];
             fireAction.started += _ => this.OnFireStart?.Invoke();

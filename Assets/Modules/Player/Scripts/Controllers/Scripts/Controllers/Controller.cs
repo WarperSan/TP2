@@ -35,30 +35,6 @@ namespace ControllerModule.Controllers
         /// </summary>
         public virtual void OnMove(Vector2 dir) { }
 
-        /// <summary>
-        /// Called when the player jumps
-        /// </summary>
-        public virtual void OnJumpStart() { }
-
-        /// <summary>
-        /// Called when the player releases jump
-        /// </summary>
-        public virtual void OnJumpEnd() { }
-
-        #endregion
-
-        #region Sprint
-
-        /// <summary>
-        /// Called when the player starts to sprint
-        /// </summary>
-        public virtual void OnSprintStart() {}
-
-        /// <summary>
-        /// Called when the player stops to sprint
-        /// </summary>
-        public virtual void OnSprintEnd() {}
-
         #endregion
 
         #region Switch
