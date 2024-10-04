@@ -90,8 +90,8 @@ namespace CutscenesModule
             boss.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
             // Play animation
-            if (boss.TryGetComponent(out FiddleStick fiddleStick))
-                fiddleStick.StartKill();
+            if (boss.TryGetComponent(out Fiddlesticks fiddlesticks))
+                fiddlesticks.StartKill();
 
             return true;
         }

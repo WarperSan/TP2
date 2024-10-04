@@ -1,19 +1,29 @@
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 namespace GenerationModule
 {
     public class Generator : MonoBehaviour
     {
         public GameObject wall;
         public GameObject path;
-        public NavMeshSurface surface;
+        public NavMeshSurface[] surfaces;
+        public GameObject gravestone;
 
         private void Awake()
         {
             var maze = new MazeGenerator(10, 10, 10).Generate();
-
+            
             DrawMaze(maze);
-            surface.BuildNavMesh();
+
+            foreach (var surface in surfaces)
+                surface.BuildNavMesh();
+
+            for (int i = 0; i < 3; i++)
+            {
+                SpawnGravestones(maze[Random.Range(0, maze.Length)]);
+            }
         }
 
         private void DrawMaze(Cell[] cells)
@@ -23,6 +33,7 @@ namespace GenerationModule
                 DrawCell(item);
                 SpawnPath(item);
             }
+            
         }
 
         private void DrawCell(Cell cell)
@@ -57,6 +68,17 @@ namespace GenerationModule
         {
             var g = Instantiate(path, transform);
             g.name = $"Path ({cell.X}; {cell.Y})";
+            g.transform.SetLocalPositionAndRotation(
+                new Vector3(cell.X, 0, cell.Y) * 3 + new Vector3(1.5f, 0, 1.5f),
+                Quaternion.Euler(Vector3.up * Random.Range(-6, 6))
+            );
+            g.transform.localScale = Vector3.one * Random.Range(80, 100);
+        }
+
+        private void SpawnGravestones(Cell cell)
+        {
+            var g = Instantiate(gravestone, transform);
+            g.name = $"Gravestone ({cell.X}; {cell.Y})";
             g.transform.SetLocalPositionAndRotation(
                 new Vector3(cell.X, 0, cell.Y) * 3 + new Vector3(1.5f, 0, 1.5f),
                 Quaternion.Euler(Vector3.up * Random.Range(-6, 6))

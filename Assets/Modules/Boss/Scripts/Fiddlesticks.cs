@@ -6,7 +6,7 @@ namespace BossModule
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(NavMeshAgent))]
-    public class FiddleStick : BehaviourTree.Trees.Tree
+    public class Fiddlesticks : BehaviourTree.Trees.Tree
     {
         private void Awake()
         {
