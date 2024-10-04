@@ -1,4 +1,5 @@
 using System.Collections;
+using BossModule;
 using UnityEngine;
 
 namespace CutscenesModule
@@ -86,7 +87,11 @@ namespace CutscenesModule
             boss.transform.localPosition = Vector3.zero;
 
             // Set rotation of the player
-            boss.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            boss.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+            // Play animation
+            if (boss.TryGetComponent(out FiddleStick fiddleStick))
+                fiddleStick.StartKill();
 
             return true;
         }
