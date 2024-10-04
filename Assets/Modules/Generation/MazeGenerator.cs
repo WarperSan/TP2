@@ -14,7 +14,7 @@ namespace GenerationModule
         private readonly Cell[] _cells;
         private readonly Vector2Int _size;
 
-        public MazeGenerator(int width, int height, int? seed = null)
+        public MazeGenerator(int width, int height, System.Random random)
         {
             // Check for size
             if (width <= 0 || height <= 0)
@@ -22,10 +22,7 @@ namespace GenerationModule
 
             _size = new Vector2Int(width, height);
             _cells = new Cell[width * height];
-
-            // Generate random seed if not specified
-            seed ??= UnityEngine.Random.Range(int.MinValue, int.MaxValue);
-            _random = new System.Random(seed.Value);
+            _random = random;
         }
 
         public Cell[] Generate()
@@ -54,7 +51,18 @@ namespace GenerationModule
 
                 // If the current cell has any neighbours which have not been visited
                 if (neighbors.Length == 0)
+                {
+                    if (currentCell.IsDeadEnd)
+                    {
+                        if (_random.Next(1) == 0)
+                            currentCell.RemoveWall(CellState.RIGHT);
+                        else
+                            currentCell.RemoveWall(CellState.BOTTOM);
+                    }
                     continue;
+                }
+
+                currentCell.IsDeadEnd = false;
 
                 // Push the current cell to the stack
                 cellsToVisit.Push(currentCell);
@@ -96,6 +104,7 @@ namespace GenerationModule
     public class Cell
     {
         public bool WasVisited;
+        public bool IsDeadEnd = true;
         public CellState State = CellState.ALL;
 
         public int X;

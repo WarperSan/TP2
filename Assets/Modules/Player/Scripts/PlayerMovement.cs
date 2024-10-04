@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float walkSpeed = 8;
 
-    private float currentSpeed = 8;
-
     #region Movement
 
     public void ProcessMovement(Vector3 direction, float elapsed)
@@ -34,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         if (direction.magnitude <= 0f)
             return;
 
-        this._characterController.Move(elapsed * this.currentSpeed * movement);
+        this._characterController.Move(elapsed * this.walkSpeed * movement);
     }
 
     #endregion

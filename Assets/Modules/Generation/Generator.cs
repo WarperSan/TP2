@@ -11,10 +11,12 @@ namespace GenerationModule
         public NavMeshSurface[] surfaces;
         public GameObject gravestone;
 
+        private System.Random random = new System.Random(10);
+
         private void Awake()
         {
-            var maze = new MazeGenerator(10, 10, 10).Generate();
-            
+            var maze = new MazeGenerator(10, 10, random).Generate();
+
             DrawMaze(maze);
 
             foreach (var surface in surfaces)
@@ -38,21 +40,21 @@ namespace GenerationModule
 
         private void DrawCell(Cell cell)
         {
-            // Right wall
-            if (cell.State.HasFlag(CellState.RIGHT))
-                SpawnWall(cell, new Vector2Int(cell.X + 1, cell.Y), new Vector3(0, 180, 0));
-
             // Left wall
             if (cell.X == 0)
                 SpawnWall(cell, new Vector2Int(cell.X, cell.Y), new Vector3(0, 180, 0));
 
-            // Top wall
-            if (cell.State.HasFlag(CellState.TOP))
-                SpawnWall(cell, new Vector2Int(cell.X, cell.Y + 1), new Vector3(0, -90, 0));
-
             // Bottom wall
             if (cell.Y == 0)
                 SpawnWall(cell, new Vector2Int(cell.X, cell.Y), new Vector3(0, -90, 0));
+
+            // Right wall
+            if (cell.State.HasFlag(CellState.RIGHT))
+                SpawnWall(cell, new Vector2Int(cell.X + 1, cell.Y), new Vector3(0, 180, 0));
+
+            // Top wall
+            if (cell.State.HasFlag(CellState.TOP))
+                SpawnWall(cell, new Vector2Int(cell.X, cell.Y + 1), new Vector3(0, -90, 0));
         }
 
         private void SpawnWall(Cell cell, Vector2Int position, Vector3 rotation)

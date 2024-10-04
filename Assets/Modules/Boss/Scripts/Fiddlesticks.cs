@@ -1,4 +1,5 @@
 using BehaviourTree.Nodes;
+using BehaviourTree.Nodes.Controls;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,11 +16,6 @@ namespace BossModule
         }
 
         public Transform tempTarget;
-
-        private void Update()
-        {
-            UpdateTarget(tempTarget.position);
-        }
 
         private void OnBecameVisible()
         {
@@ -39,7 +35,12 @@ namespace BossModule
         /// <inheritdoc/>
         protected override Node SetUpTree()
         {
-            throw new System.NotImplementedException();
+            var root = new Selector();
+            root += new ChaseNode(agent, "TARGET");
+
+            root.SetData("TARGET", tempTarget);
+
+            return root.Alias("ROOT");
         }
 
         #endregion
@@ -48,15 +49,6 @@ namespace BossModule
 
         [Header("Movement")]
         private NavMeshAgent agent;
-
-        private void UpdateTarget(Vector3 position)
-        {
-            // Prevent off-mesh errors
-            if (!agent.isOnNavMesh)
-                return;
-
-            agent.destination = position;
-        }
 
         #endregion
 
@@ -93,6 +85,11 @@ namespace BossModule
             agent.enabled = false;
         }
 
+        public void Kill()
+        {
+            FindAnyObjectByType<CutscenesModule.DeathCutscene>().Play();
+        }
+
         /// <summary>
         /// Sets the boss to be able to kill the player or not
         /// </summary>
@@ -104,7 +101,7 @@ namespace BossModule
             if (!other.transform.CompareTag("Player"))
                 return;
 
-            FindAnyObjectByType<CutscenesModule.DeathCutscene>().Play();
+            Kill();
         }
 
         #endregion
