@@ -139,6 +139,23 @@ namespace GenerationModule
                 cell2.RemoveWall(CellState.BOTTOM);
             }
         }
+
+        public bool IsInCorner()
+        {
+            if (State.HasFlag(CellState.TOP) && State.HasFlag(CellState.RIGHT))
+                return true;
+
+            if (State.HasFlag(CellState.TOP) && State.HasFlag(CellState.LEFT))
+                return true;
+
+            if (State.HasFlag(CellState.BOTTOM) && State.HasFlag(CellState.RIGHT))
+                return true;
+
+            if (State.HasFlag(CellState.BOTTOM) && State.HasFlag(CellState.LEFT))
+                return true;
+
+            return false;
+        }
     }
 
     [Flags]
