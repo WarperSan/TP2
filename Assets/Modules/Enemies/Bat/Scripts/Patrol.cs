@@ -25,6 +25,7 @@ namespace BehaviourTree.Trees
 
             var root = new Selector();
             root += new ChaseNode(
+                this,
                 agent,
                 target,
                 detectionRange
@@ -34,9 +35,15 @@ namespace BehaviourTree.Trees
                 destinations
             );
 
-            return root;
+            return root.Alias("Root");
         }
+        public void SetAlerted(bool isAlerted)
+        {
+            if(isAlerted)
+            {
 
+            }
+        }
 #if UNITY_EDITOR
 
         private void OnDrawGizmos()
@@ -141,15 +148,48 @@ namespace BehaviourTree.Trees
     public class ChaseNode : Sequence
     {
         const string TARGET = "target";
+        float cooldownElapsed = 0;
+        readonly float cooldown = 5f;
+        float chaseElapsed = 0;
+        readonly float chase = 5f;
 
-        public ChaseNode(NavMeshAgent agent, Transform target, float range)
+        public ChaseNode(Patrol patrol, NavMeshAgent agent, Transform target, float range)
         {
+            var cooldownSequence = new CallbackNode(() =>
+            {
+                cooldownElapsed -= Time.deltaTime;
+
+                if (cooldownElapsed > 0)
+                    return NodeState.RUNNING;
+
+                return NodeState.SUCCESS;
+            });
+
+            Attach(
+                cooldownSequence.Alias("Cooldown")
+            );
+
             Attach(
                 new DistanceSmaller(agent.transform, TARGET, range)
             );
 
+            var chaseSequence = new Parallel();
+            chaseSequence += new GoToTarget(agent, TARGET);
+
+            chaseSequence += new CallbackNode(() =>
+            {
+                chaseElapsed += Time.deltaTime;
+
+                if (chaseElapsed < chase)
+                    return NodeState.RUNNING;
+
+                cooldownElapsed = cooldown;
+                chaseElapsed = 0;
+                return NodeState.SUCCESS;
+            }).Alias("IsChasing");
+
             Attach(
-                new GoToTarget(agent, TARGET)
+                chaseSequence.Alias("Chasing")
             );
 
             // Set data
