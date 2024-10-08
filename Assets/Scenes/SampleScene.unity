@@ -170,11 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52face76c0a79b6bfb0432269dd3f6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 2912315595556528967, guid: 816a9cab062557147a444547a9da2038, type: 3}
-  path: {fileID: 5393219660208205571, guid: 944361f4daf373dae9886d31b1fe4bb2, type: 3}
   surfaces:
   - {fileID: 61889838}
   - {fileID: 61889839}
+  wall: {fileID: 2912315595556528967, guid: 816a9cab062557147a444547a9da2038, type: 3}
+  path: {fileID: 5393219660208205571, guid: 944361f4daf373dae9886d31b1fe4bb2, type: 3}
   gravestone: {fileID: 7280715698810713722, guid: 6defebb0caced9e42a649fce27f0bd69,
     type: 3}
   gravestoneCount: 3
@@ -635,7 +635,7 @@ GameObject:
   m_Layer: 0
   m_Name: PatrolPoint3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -982,7 +982,7 @@ GameObject:
   m_Layer: 0
   m_Name: PatrolPoint4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1169,7 +1169,7 @@ GameObject:
   m_Layer: 0
   m_Name: PatrolPoint1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3584,7 +3584,7 @@ GameObject:
   m_Layer: 0
   m_Name: PatrolPoint2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3614,17 +3614,17 @@ PrefabInstance:
     - target: {fileID: 3016511316698858404, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.49
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 3016511316698858404, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3016511316698858404, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.23
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 3016511316698858404, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
@@ -3669,7 +3669,7 @@ PrefabInstance:
     - target: {fileID: 5127126118584201617, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6516581129003617649, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
@@ -3680,22 +3680,22 @@ PrefabInstance:
         type: 3}
       propertyPath: destinations.Array.data[0]
       value: 
-      objectReference: {fileID: 1184835397}
+      objectReference: {fileID: 1117850772}
     - target: {fileID: 6516581129003617649, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: destinations.Array.data[1]
       value: 
-      objectReference: {fileID: 2124031088}
+      objectReference: {fileID: 844592014}
     - target: {fileID: 6516581129003617649, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: destinations.Array.data[2]
       value: 
-      objectReference: {fileID: 844592014}
+      objectReference: {fileID: 2124031088}
     - target: {fileID: 6516581129003617649, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: destinations.Array.data[3]
       value: 
-      objectReference: {fileID: 1117850772}
+      objectReference: {fileID: 1184835397}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

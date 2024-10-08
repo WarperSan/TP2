@@ -106,7 +106,7 @@ namespace BehaviourTree.Trees
 
         public PatrolNode(NavMeshAgent agent, Transform[] targets)
         {
-            // Aller à la prochaine destination
+            // Aller ï¿½ la prochaine destination
             Attach(
                 new GoToTarget(agent, CURRENT_TARGET)
             );
