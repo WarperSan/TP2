@@ -35,12 +35,14 @@ public class PlayerInteraction : MonoBehaviour
         if (IInteractable.CanInteract(this.Eyes.position, this.Eyes.forward, this.interactRange))
         {
             this.cursor.sprite = this.interactCursor;
-            this.cursor.rectTransform.sizeDelta = new Vector2(50, 50);
+            this.cursor.rectTransform.sizeDelta = new Vector2(100, 100);
+            this.cursor.color = Color.red;
         }
         else
         {
             this.cursor.sprite = this.normalCursor;
             this.cursor.rectTransform.sizeDelta = new Vector2(10, 10);
+            this.cursor.color = new Color(0, 0, 0, 0);
         }
     }
 

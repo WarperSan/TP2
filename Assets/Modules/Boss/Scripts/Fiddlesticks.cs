@@ -75,6 +75,28 @@ namespace BossModule
 
         #endregion
 
+        #region Damage
+
+        [Header("Damage")]
+        [SerializeField]
+        private ParticleSystem damageParticles;
+
+        private int healthLeft;
+
+        public void SetHealth(int amount)
+        {
+            healthLeft = amount;
+        }
+
+        public void Damage()
+        {
+            healthLeft--;
+
+            damageParticles.Play();
+        }
+
+        #endregion
+
         #region Kill
 
         private Collider killCollider;
