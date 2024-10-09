@@ -565,15 +565,15 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 1965.0001220703125,
-            "y": 297.0000305175781
+            "x": 2189.0,
+            "y": 416.0
         },
         "m_Blocks": []
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 2013.0001220703125,
-            "y": 457.0000305175781
+            "x": 2172.0,
+            "y": 540.0
         },
         "m_Blocks": [
             {
@@ -2148,10 +2148,10 @@
     "m_Guid": {
         "m_GuidSerialized": "a4ea9a71-266e-4c86-8a8d-f5da21af0325"
     },
-    "m_Name": "ScanLineStrength",
+    "m_Name": "ScanLinesStrength",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "ScanLineStrength",
-    "m_DefaultReferenceName": "_ScanLineStrength",
+    "m_RefNameGeneratedByDisplayName": "ScanLinesStrength",
+    "m_DefaultReferenceName": "_ScanLinesStrength",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2266,8 +2266,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1392.0,
-            "y": 298.0000305175781,
+            "x": 1374.0001220703125,
+            "y": 288.0,
             "width": 155.0,
             "height": 142.0
         }
@@ -2783,9 +2783,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1226.0,
-            "y": 339.0,
-            "width": 128.0,
+            "x": 1223.0,
+            "y": 408.0,
+            "width": 128.0001220703125,
             "height": 101.00003051757813
         }
     },
@@ -2910,9 +2910,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1835.0001220703125,
-            "y": 704.0000610351563,
-            "width": 208.0,
+            "x": 1879.9998779296875,
+            "y": 540.0,
+            "width": 208.0001220703125,
             "height": 302.0
         }
     },
@@ -3341,9 +3341,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1572.0,
-            "y": 214.00001525878907,
-            "width": 208.0,
+            "x": 1550.0001220703125,
+            "y": 288.0,
+            "width": 207.9998779296875,
             "height": 313.0
         }
     },
@@ -3560,7 +3560,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "cbae2d4fda6b4ae48737fd17425d32ec",
     "m_Id": 0,
-    "m_DisplayName": "ScanLineStrength",
+    "m_DisplayName": "ScanLinesStrength",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
