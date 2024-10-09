@@ -36,6 +36,7 @@ namespace BossModule
         protected override Node SetUpTree()
         {
             var root = new Selector();
+            root += new HideNode(agent, "TARGET");
             root += new ChaseNode(agent, "TARGET");
 
             root.SetData("TARGET", tempTarget);
@@ -49,6 +50,24 @@ namespace BossModule
 
         [Header("Movement")]
         private NavMeshAgent agent;
+
+        private void OnDrawGizmos()
+        {
+            if (agent == null)
+                return;
+
+            Gizmos.color = new Color(255f / 255f, 127 / 255f, 80 / 255f);
+            Gizmos.DrawCube(agent.destination, Vector3.one);
+
+            foreach (var item in agent.path.corners)
+            {
+                Gizmos.DrawCube(item, Vector3.one * 0.5f);
+
+                var copy = item;
+                copy.y = tempTarget.position.y;
+                Gizmos.DrawLine(copy, tempTarget.position);
+            }
+        }
 
         #endregion
 

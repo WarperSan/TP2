@@ -1912,12 +1912,12 @@ PrefabInstance:
     - target: {fileID: 2767199122574865051, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 2767199122574865051, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.25
+      value: 26.75
       objectReference: {fileID: 0}
     - target: {fileID: 2767199122574865051, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
@@ -2281,8 +2281,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5430230231194185714, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430230231194185714, guid: d9e4b3f348a2ffd47ab530513b49d238,
+        type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5503051506003784706, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
@@ -3217,6 +3222,11 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.06751698
       objectReference: {fileID: 0}
+    - target: {fileID: 3759232716779577308, guid: 05b4b110f76370b46812a870fb5170cf,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3827855298915630284, guid: 05b4b110f76370b46812a870fb5170cf,
         type: 3}
       propertyPath: walkSpeed
@@ -3240,7 +3250,7 @@ PrefabInstance:
     - target: {fileID: 4465587025388586430, guid: 05b4b110f76370b46812a870fb5170cf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 8.25
       objectReference: {fileID: 0}
     - target: {fileID: 4465587025388586430, guid: 05b4b110f76370b46812a870fb5170cf,
         type: 3}
@@ -3689,7 +3699,7 @@ PrefabInstance:
     - target: {fileID: 5127126118584201617, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6516581129003617649, guid: 9a35be902c4cb5f48856f034d4d127bb,
         type: 3}

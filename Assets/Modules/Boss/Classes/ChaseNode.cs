@@ -55,8 +55,17 @@ namespace BossModule
             if (t == null)
                 return agent.transform.position;
 
+            var position = t.position;
+
             // Get position behind the target
-            return t.position - t.forward * 2;
+            if (Physics.Raycast(position, -t.forward, out var hit, 2))
+            {
+                position = hit.transform.position;
+                position.y = t.position.y;
+                return position;
+            }
+
+            return position - t.forward * 2;
         }
 
         private NodeState DecayTimer()
