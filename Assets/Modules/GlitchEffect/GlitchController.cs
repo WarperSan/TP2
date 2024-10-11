@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GlitchController : MonoBehaviour
@@ -12,8 +10,18 @@ public class GlitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mat.SetFloat("_NoiseAmount", noiseAmount);        
-        mat.SetFloat("_GlitchStrength", glitchStrength);        
+        mat.SetFloat("_NoiseAmount", noiseAmount);
+        mat.SetFloat("_GlitchStrength", glitchStrength);
         mat.SetFloat("_ScanLinesStrength", scanLinesStrength);
+    }
+
+    private void OnEnable()
+    {
+        mat.SetFloat("_Strength", 1);
+    }
+
+    private void OnDisable()
+    {
+        mat.SetFloat("_Strength", 0);
     }
 }

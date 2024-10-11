@@ -3277,11 +3277,6 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.06751698
       objectReference: {fileID: 0}
-    - target: {fileID: 3028893095304836645, guid: 05b4b110f76370b46812a870fb5170cf,
-        type: 3}
-      propertyPath: m_RendererIndex
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 3827855298915630284, guid: 05b4b110f76370b46812a870fb5170cf,
         type: 3}
       propertyPath: walkSpeed

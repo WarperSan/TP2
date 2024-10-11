@@ -96,23 +96,24 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _GlitchStrength: 75.266846
+    - _GlitchStrength: 87.76892
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NoiseAmount: 75.266846
+    - _NoiseAmount: 87.76892
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ScanLineStrength: 0
-    - _ScanLinesStrength: 0.2473315
+    - _ScanLinesStrength: 0.12231077
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _Strength: 1
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
