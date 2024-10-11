@@ -114,10 +114,6 @@ namespace BossModule
 
         #region Damage
 
-        [Header("Damage")]
-        [SerializeField]
-        private ParticleSystem damageParticles;
-
         private int healthLeft;
 
         public void SetHealth(int amount)
@@ -128,8 +124,6 @@ namespace BossModule
         public void Damage()
         {
             healthLeft--;
-
-            //damageParticles.Play();
         }
 
         #endregion
