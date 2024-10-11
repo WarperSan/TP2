@@ -32,6 +32,7 @@ namespace BossModule
 
             //root += new TeleportCloserNode(agent, "TARGET");
             //root += new HideNode(agent, "TARGET");
+            root += new ChaseNode(this, agent);
             root += new StareNode(this);
             root += new LurkNode(this, agent);
 
@@ -48,7 +49,7 @@ namespace BossModule
 
         [Header("Movement")]
         private NavMeshAgent agent;
-
+        public bool isChasing;
         private void OnDrawGizmos()
         {
             if (agent == null)
