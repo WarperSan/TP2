@@ -33,7 +33,7 @@ namespace BossModule
             //root += new TeleportCloserNode(agent, "TARGET");
             //root += new HideNode(agent, "TARGET");
             root += new StareNode(this);
-            root += new ChaseNode(this, agent);
+            root += new LurkNode(this, agent);
 
             root.SetData("TARGET", tempTarget);
 

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace BossModule
 {
-    public class ChaseNode : Sequence
+    public class LurkNode : Sequence
     {
         private const float TIMER_SECONDS = 5;
 
@@ -15,7 +15,7 @@ namespace BossModule
 
         private float timer;
 
-        public ChaseNode(Fiddlesticks fiddlesticks, NavMeshAgent agent)
+        public LurkNode(Fiddlesticks fiddlesticks, NavMeshAgent agent)
         {
             this.fiddlesticks = fiddlesticks;
             this.agent = agent;
