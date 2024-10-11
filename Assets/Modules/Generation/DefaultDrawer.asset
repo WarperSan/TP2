@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4880b67d71423d6879ab55be9dade4, type: 3}
+  m_Name: DefaultDrawer
+  m_EditorClassIdentifier: 
+  cellSize: 3
+  wallPrefab: {fileID: 2912315595556528967, guid: 816a9cab062557147a444547a9da2038,
+    type: 3}
+  pathPrefab: {fileID: 5393219660208205571, guid: 944361f4daf373dae9886d31b1fe4bb2,
+    type: 3}
+  gravestonePrefab: {fileID: 7280715698810713722, guid: 6defebb0caced9e42a649fce27f0bd69,
+    type: 3}
+  gravestoneCount: 3

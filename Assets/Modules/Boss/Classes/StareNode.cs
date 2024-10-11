@@ -2,17 +2,13 @@ using BehaviourTree.Nodes;
 using BehaviourTree.Nodes.Controls;
 using BehaviourTree.Nodes.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace BossModule
 {
     public class StareNode : Sequence
     {
-        private const float TIMER_SECONDS = 5;
+        private const float TIMER_SECONDS = 3.5f;
         private readonly Fiddlesticks fiddlesticks;
-
-        // Wait 5 seconds
-        // Kill player
 
         private float timer;
         private bool hasStartedStaring;
@@ -28,7 +24,7 @@ namespace BossModule
             Attach(new CallbackNode(StareTimer));
 
             // Kill player
-            Attach(new CallbackNode(KillTarget));
+            Attach(new CallbackNode(ChaseTarget));
         }
 
         private NodeState IsStaring()
@@ -52,7 +48,7 @@ namespace BossModule
             }
             else
             {
-                timer += Time.deltaTime * 0.5f;
+                timer += Time.deltaTime * 2f;
             }
 
             timer = Mathf.Clamp(timer, 0, TIMER_SECONDS);
@@ -68,9 +64,10 @@ namespace BossModule
                 return NodeState.SUCCESS;
             return NodeState.RUNNING;
         }
-        private NodeState KillTarget()
+        private NodeState ChaseTarget()
         {
-            fiddlesticks.Kill();
+            fiddlesticks.isChasing = true;
+            EndStaring();
             return NodeState.SUCCESS;
         }
 

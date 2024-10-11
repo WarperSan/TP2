@@ -6,9 +6,8 @@ namespace GenerationModule
 {
     public class Generator : MonoBehaviour
     {
-        private const float CELL_SIZE = 3f;
-
         public NavMeshSurface[] surfaces;
+        public MazeDrawer drawer;
 
         private readonly System.Random random = new(10);
 
@@ -50,20 +49,20 @@ namespace GenerationModule
             // Top wall
             if (cell.State.HasFlag(CellState.TOP))
                 SpawnWall(cell, new Vector2Int(cell.X, cell.Y + 1), new Vector3(0, -90, 0));
+
+            // 1% chance to spawn a prop
+            if (random.Next(100) == 0)
+                SpawnProp(cell);
         }
 
         #region Wall
 
-        [Header("Wall")]
-        [SerializeField]
-        private GameObject wall;
-
         private void SpawnWall(Cell cell, Vector2Int position, Vector3 rotation)
         {
-            var g = Instantiate(wall, transform);
+            var g = Instantiate(drawer.wallPrefab, transform);
             g.name = $"Wall ({cell.X}; {cell.Y}) ({cell.State})";
             g.transform.SetLocalPositionAndRotation(
-                new Vector3(position.x, 0, position.y) * CELL_SIZE,
+                new Vector3(position.x, 0, position.y) * drawer.cellSize,
                 Quaternion.Euler(rotation)
             );
         }
@@ -72,16 +71,12 @@ namespace GenerationModule
 
         #region Path
 
-        [Header("Path")]
-        [SerializeField]
-        private GameObject path;
-
         private void SpawnPath(Cell cell)
         {
-            var g = Instantiate(path, transform);
+            var g = Instantiate(drawer.pathPrefab, transform);
             g.name = $"Path ({cell.X}; {cell.Y})";
             g.transform.SetLocalPositionAndRotation(
-                new Vector3(cell.X, 0, cell.Y) * CELL_SIZE + new Vector3(CELL_SIZE, 0, CELL_SIZE) / 2,
+                new Vector3(cell.X, 0, cell.Y) * drawer.cellSize + new Vector3(drawer.cellSize, 0, drawer.cellSize) / 2,
                 Quaternion.Euler(Vector3.up * Random.Range(-6, 6))
             );
             g.transform.localScale = Vector3.one * Random.Range(80, 100);
@@ -91,13 +86,6 @@ namespace GenerationModule
 
         #region Gravestone
 
-        [Header("Gravestone")]
-        [SerializeField]
-        private GameObject gravestone;
-
-        [SerializeField, Min(1)]
-        private int gravestoneCount = 1;
-
         private void DrawGraveStones(Cell[] cells)
         {
             Cell[] copy = cells
@@ -105,7 +93,7 @@ namespace GenerationModule
                 .Where(c => c.IsInCorner())
                 .ToArray();
 
-            for (int i = 0; i < Mathf.Min(copy.Length, gravestoneCount); i++)
+            for (int i = 0; i < Mathf.Min(copy.Length, drawer.gravestoneCount); i++)
             {
                 int rdmIndex = random.Next(0, copy.Length - i);
 
@@ -142,12 +130,25 @@ namespace GenerationModule
                 offset.z *= -1;
             }
 
-            var g = Instantiate(gravestone, transform);
+            var g = Instantiate(drawer.gravestonePrefab, transform);
             g.name = $"Gravestone ({cell.X}; {cell.Y})";
             g.transform.SetLocalPositionAndRotation(
-                new Vector3(cell.X, 0, cell.Y) * CELL_SIZE + new Vector3(CELL_SIZE, 0, CELL_SIZE) / 2 + offset,
+                new Vector3(cell.X, 0, cell.Y) * drawer.cellSize + new Vector3(drawer.cellSize, 0, drawer.cellSize) / 2 + offset,
                 Quaternion.Euler(0, rotation, 0)
             );
+        }
+
+        #endregion
+
+        #region Props
+
+        private void SpawnProp(Cell cell)
+        {
+            // If no prop, skip
+            if (drawer.propsPrefab.Length == 0)
+                return;
+
+            var propPrefab = drawer.propsPrefab[random.Next(0, drawer.propsPrefab.Length)];
         }
 
         #endregion

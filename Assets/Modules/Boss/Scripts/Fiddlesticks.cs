@@ -98,6 +98,8 @@ namespace BossModule
             animator.SetTrigger("Spotted");
             SetKillActive(false);
             stareEffect.weight = 0.5f;
+
+            transform.LookAt(GetTarget());
         }
 
         public void StareUpdate(float percent)
@@ -109,6 +111,24 @@ namespace BossModule
         {
             agent.enabled = true;
             SetKillActive(true);
+        }
+
+        #endregion
+
+        #region Chase
+
+        public void StartChase()
+        {
+            animator.SetTrigger("Run");
+            foreach (var item in GetTarget().GetComponents<NavMeshObstacle>())
+                item.enabled = false;
+        }
+
+        public void EndChase()
+        {
+            isChasing = false;
+            foreach (var item in GetTarget().GetComponents<NavMeshObstacle>())
+                item.enabled = true;
         }
 
         #endregion
