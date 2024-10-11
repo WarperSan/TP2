@@ -1372,7 +1372,7 @@ PrefabInstance:
     - target: {fileID: 141648940306631583, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
       propertyPath: m_Materials.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 156373464957094285, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
@@ -1563,11 +1563,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -28.047417
-      objectReference: {fileID: 0}
-    - target: {fileID: 1169236459865147166, guid: d9e4b3f348a2ffd47ab530513b49d238,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1251005713994527061, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
@@ -1912,12 +1907,12 @@ PrefabInstance:
     - target: {fileID: 2767199122574865051, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 2767199122574865051, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.75
+      value: 13.75
       objectReference: {fileID: 0}
     - target: {fileID: 2767199122574865051, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
@@ -2278,16 +2273,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.0022390645
-      objectReference: {fileID: 0}
-    - target: {fileID: 5430230231194185714, guid: d9e4b3f348a2ffd47ab530513b49d238,
-        type: 3}
-      propertyPath: m_Speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5430230231194185714, guid: d9e4b3f348a2ffd47ab530513b49d238,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5503051506003784706, guid: d9e4b3f348a2ffd47ab530513b49d238,
         type: 3}
@@ -3221,11 +3206,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0.06751698
-      objectReference: {fileID: 0}
-    - target: {fileID: 3759232716779577308, guid: 05b4b110f76370b46812a870fb5170cf,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3827855298915630284, guid: 05b4b110f76370b46812a870fb5170cf,
         type: 3}

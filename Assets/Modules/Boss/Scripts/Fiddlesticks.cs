@@ -2,6 +2,7 @@ using BehaviourTree.Nodes;
 using BehaviourTree.Nodes.Controls;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 namespace BossModule
 {
@@ -17,18 +18,10 @@ namespace BossModule
 
         public Transform tempTarget;
 
-        private void OnBecameVisible()
-        {
-            if (!wasHidden)
-                return;
+        public bool IsVisible { get; private set; } = true;
 
-            wasHidden = false;
-            animator.SetTrigger("Spotted");
-            SetKillActive(false);
-        }
-
-        public bool wasHidden = false;
-        public Animator animator;
+        [SerializeField]
+        private Animator animator;
 
         #region Behaviour Tree
 
@@ -36,13 +29,18 @@ namespace BossModule
         protected override Node SetUpTree()
         {
             var root = new Selector();
-            root += new HideNode(agent, "TARGET");
-            root += new ChaseNode(agent, "TARGET");
+
+            //root += new TeleportCloserNode(agent, "TARGET");
+            //root += new HideNode(agent, "TARGET");
+            root += new StareNode(this);
+            root += new ChaseNode(this, agent);
 
             root.SetData("TARGET", tempTarget);
 
             return root.Alias("ROOT");
         }
+
+        public Transform GetTarget() => tempTarget;
 
         #endregion
 
@@ -58,15 +56,6 @@ namespace BossModule
 
             Gizmos.color = new Color(255f / 255f, 127 / 255f, 80 / 255f);
             Gizmos.DrawCube(agent.destination, Vector3.one);
-
-            foreach (var item in agent.path.corners)
-            {
-                Gizmos.DrawCube(item, Vector3.one * 0.5f);
-
-                var copy = item;
-                copy.y = tempTarget.position.y;
-                Gizmos.DrawLine(copy, tempTarget.position);
-            }
         }
 
         #endregion
@@ -87,10 +76,39 @@ namespace BossModule
 
             foreach (var item in lights)
                 item.enabled = isVisible;
+
+            this.IsVisible = isVisible;
         }
 
         public void Show() => SetVisibility(true);
         public void Hide() => SetVisibility(false);
+
+        #endregion
+
+        #region Stare
+
+        [Header("Stare")]
+        [SerializeField]
+        private Volume stareEffect;
+
+        public void StartStare()
+        {
+            agent.enabled = false;
+            animator.SetTrigger("Spotted");
+            SetKillActive(false);
+            stareEffect.weight = 0.5f;
+        }
+
+        public void StareUpdate(float percent)
+        {
+            stareEffect.weight = Mathf.Clamp01(percent);
+        }
+
+        public void EndStare()
+        {
+            agent.enabled = true;
+            SetKillActive(true);
+        }
 
         #endregion
 
@@ -111,7 +129,7 @@ namespace BossModule
         {
             healthLeft--;
 
-            damageParticles.Play();
+            //damageParticles.Play();
         }
 
         #endregion
@@ -129,12 +147,13 @@ namespace BossModule
         public void Kill()
         {
             FindAnyObjectByType<CutscenesModule.DeathCutscene>().Play();
+            enabled = false;
         }
 
         /// <summary>
         /// Sets the boss to be able to kill the player or not
         /// </summary>
-        public void SetKillActive(bool isKillActive) => killCollider.isTrigger = isKillActive;
+        private void SetKillActive(bool isKillActive) => killCollider.isTrigger = isKillActive;
 
         /// <inheritdoc/>
         private void OnTriggerEnter(Collider other)

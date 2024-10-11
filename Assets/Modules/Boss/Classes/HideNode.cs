@@ -113,5 +113,12 @@ namespace BossModule
         }
 
         #endregion
+
+        #region Node
+
+        /// <inheritdoc/>
+        public override string GetText() => "Hide";
+
+        #endregion
     }
 }

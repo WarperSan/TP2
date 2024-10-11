@@ -10,6 +10,9 @@ public class Gravestone : MonoBehaviour, IInteractable
     [SerializeField]
     private Light _light;
 
+    [SerializeField]
+    private ParticleSystem[] particles;
+
     private void Awake()
     {
         _collider = GetComponent<Collider>();
@@ -21,5 +24,8 @@ public class Gravestone : MonoBehaviour, IInteractable
         _collider.enabled = false;
         fiddlesticks.Damage();
         _light.color = Color.green;
+
+        foreach (var item in particles)
+            item.Play();
     }
 }

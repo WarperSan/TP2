@@ -1,7 +1,6 @@
 using BehaviourTree.Nodes;
 using BehaviourTree.Nodes.Controls;
 using BehaviourTree.Nodes.Generic;
-using ExtensionsModule;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,88 +8,119 @@ namespace BossModule
 {
     public class ChaseNode : Sequence
     {
-        private NavMeshAgent agent;
-        private string target;
+        private const float TIMER_SECONDS = 5;
 
-        private float delay;
+        private readonly Fiddlesticks fiddlesticks;
+        private readonly NavMeshAgent agent;
 
-        public ChaseNode(NavMeshAgent agent, string target)
+        private float timer;
+
+        public ChaseNode(Fiddlesticks fiddlesticks, NavMeshAgent agent)
         {
+            this.fiddlesticks = fiddlesticks;
             this.agent = agent;
-            this.target = target;
-            delay = 5;
+            this.timer = TIMER_SECONDS;
 
-            // Stay behind the player
-            // Freeze when player looks
-            // Delay
-            // Start chase
+            // Walk behind the player
+            Attach(new CallbackNode(GetBehindTarget));
 
-            Attach(
-                new CallbackNode(() =>
-                {
-                    if (!agent.enabled)
-                        return NodeState.FAILURE;
+            // Wait X seconds
+            Attach(new CallbackNode(KillTimer));
 
-                    agent.destination = GetTargetPosition();
-
-                    return NodeState.SUCCESS;
-                }).Alias("Go To Target")
-            );
-
-            Attach(new CallbackNode(DecayTimer));
-
-            Attach(
-                new CallbackNode(() =>
-                {
-                    GameObject.FindAnyObjectByType<Fiddlesticks>().Kill();
-                    return NodeState.SUCCESS;
-                })
-            );
+            // Kill the player
+            Attach(new CallbackNode(KillTarget));
         }
 
-        private Vector3 GetTargetPosition()
+        private NodeState GetBehindTarget()
         {
-            Transform t = GetData<Transform>(target);
-
-            if (t == null)
-                return agent.transform.position;
-
-            var position = t.position;
-
-            // Get position behind the target
-            if (Physics.Raycast(position, -t.forward, out var hit, 2))
-            {
-                position = hit.transform.position;
-                position.y = t.position.y;
-                return position;
-            }
-
-            return position - t.forward * 2;
-        }
-
-        private NodeState DecayTimer()
-        {
-            Transform t = GetData<Transform>(target);
-
-            if (t == null)
+            // If agent disabled, skip
+            if (!agent.enabled)
                 return NodeState.FAILURE;
 
-            if (t.Distance(agent.transform) <= 2f)
-                delay -= Time.deltaTime;
-            else
-                delay += Time.deltaTime;
+            var behind = GetBehindPosition();
 
-            delay = Mathf.Clamp(delay, 0, 5);
+            if (behind.HasValue)
+                agent.SetDestination(behind.Value);
 
-            if (delay <= 0)
+            // If doesn't have a path, skip
+            if (!agent.hasPath)
+                return NodeState.FAILURE;
+
+            // If can't reach destination, skip
+            if (agent.pathEndPosition != agent.destination)
+                return NodeState.FAILURE;
+
+            // If reached destination, succeed
+            if (agent.remainingDistance <= agent.stoppingDistance * 2f)
                 return NodeState.SUCCESS;
+
             return NodeState.RUNNING;
+        }
+
+        private NodeState KillTimer()
+        {
+            var behind = GetBehindPosition();
+
+            if (!behind.HasValue)
+                return NodeState.FAILURE;
+
+            var distance = Vector3.Distance(behind.Value, agent.transform.position);
+
+            // If close enough, decrease timer
+            if (distance <= 3.5f)
+                timer -= Time.deltaTime;
+            else
+                timer += Time.deltaTime * 0.5f;
+
+            timer = Mathf.Clamp(timer, 0, TIMER_SECONDS);
+
+            return timer <= 0 ? NodeState.SUCCESS : NodeState.RUNNING;
+        }
+
+        private NodeState KillTarget()
+        {
+            fiddlesticks.Kill();
+            return NodeState.RUNNING;
+        }
+
+        private Vector3? GetBehindPosition()
+        {
+            Vector3? position;
+
+            Transform t = fiddlesticks.GetTarget();
+
+            if (t != null)
+            {
+                position = t.position;
+                var back = -t.forward;
+                back.y = 0;
+
+                // Get position behind the target
+                if (Physics.Raycast(position.Value, back, out var hit, 2))
+                {
+                    position = new Vector3(
+                        hit.transform.position.x,
+                        t.position.y,
+                        hit.transform.position.z
+                    );
+                }
+                else
+                    position += back * 2;
+            }
+            else
+                position = agent.destination;
+
+            if (!position.HasValue)
+                return null;
+
+            if (NavMesh.SamplePosition(position.Value, out var navMeshHit, maxDistance: 0.75f, NavMesh.AllAreas))
+                return navMeshHit.position;
+            return null;
         }
 
         #region Node
 
-        /// <inheritdoc/>
-        public override string GetText() => "Sneaky Chase";
+        public override string GetText() => "Lurk";
 
         #endregion
     }
