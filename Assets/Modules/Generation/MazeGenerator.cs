@@ -54,9 +54,9 @@ namespace GenerationModule
                 {
                     if (currentCell.IsDeadEnd)
                     {
-                        if (_random.Next(1) == 0)
+                        if (_random.Next(1) == 0 && currentCell.X < _size.x - 1)
                             currentCell.RemoveWall(CellState.RIGHT);
-                        else
+                        else if (currentCell.Y > 0)
                             currentCell.RemoveWall(CellState.BOTTOM);
                     }
                     continue;

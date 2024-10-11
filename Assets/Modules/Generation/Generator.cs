@@ -10,7 +10,7 @@ namespace GenerationModule
 
         public NavMeshSurface[] surfaces;
 
-        private readonly System.Random random = new(20);
+        private readonly System.Random random = new(10);
 
         private void Awake()
         {
