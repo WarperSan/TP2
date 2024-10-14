@@ -74,7 +74,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  detectionRange: 3
+  detectionRange: 6
+  animator: {fileID: 6883480909969106439}
 --- !u!1001 &4176925874588966878
 PrefabInstance:
   m_ObjectHideFlags: 0

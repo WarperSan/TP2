@@ -19,6 +19,7 @@ namespace BossModule
         public Transform tempTarget;
 
         public bool IsVisible { get; private set; } = true;
+        public bool IsAlerted = false;
 
         [SerializeField]
         private Animator animator;
@@ -34,6 +35,7 @@ namespace BossModule
             //root += new HideNode(agent, "TARGET");
             root += new ChaseNode(this, agent);
             root += new StareNode(this);
+            root += new TeleportNode(this, agent);
             root += new LurkNode(this, agent);
 
             root.SetData("TARGET", tempTarget);
