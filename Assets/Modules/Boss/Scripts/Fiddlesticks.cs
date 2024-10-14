@@ -137,7 +137,7 @@ namespace BossModule
 
         #region Damage
 
-        private int healthLeft;
+        private int healthLeft = 3;
 
         public void SetHealth(int amount)
         {
@@ -147,6 +147,21 @@ namespace BossModule
         public void Damage()
         {
             healthLeft--;
+
+            if (healthLeft <= 0)
+                Die();
+        }
+
+        public void StartDeath()
+        {
+            animator.SetTrigger("Die");
+            agent.enabled = false;
+        }
+
+        public void Die()
+        {
+            FindAnyObjectByType<CutscenesModule.WinCutscene>().Play();
+            enabled = false;
         }
 
         #endregion

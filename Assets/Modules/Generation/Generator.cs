@@ -9,7 +9,7 @@ namespace GenerationModule
         public NavMeshSurface[] surfaces;
         public MazeDrawer drawer;
 
-        private readonly System.Random random = new(10);
+        private readonly System.Random random = new();
 
         private void Awake()
         {

@@ -21,7 +21,7 @@ public class Gravestone : MonoBehaviour, IInteractable
 
     public void OnClick()
     {
-        _collider.enabled = false;
+        //_collider.enabled = false;
         fiddlesticks.Damage();
         _light.color = Color.green;
 
