@@ -9,10 +9,12 @@ namespace BossModule
 {
     public class ChaseNode : Sequence
     {
-        private const float TIMER_SECONDS = 5f;
+        private const float TIMER_SECONDS = 3f;
+        private const float CHASE_SPEED = 5.8f;
         private readonly Fiddlesticks fiddlesticks;
         private readonly NavMeshAgent agent;
 
+        private float previousSpeed;
         private float timer;
         private bool wasChasing;
 
@@ -92,12 +94,15 @@ namespace BossModule
         {
             wasChasing = true;
             timer = TIMER_SECONDS;
+            previousSpeed = agent.speed;
+            agent.speed = CHASE_SPEED;
             fiddlesticks.StartChase();
         }
 
         private void EndChase()
         {
             wasChasing = false;
+            agent.speed = previousSpeed;
             fiddlesticks.EndChase();
         }
 
